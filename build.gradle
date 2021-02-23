@@ -1,0 +1,46 @@
+wrapper {
+    gradleVersion = '5.2.1'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+group = pGroup
+version = pVersion
+
+repositories {
+    maven {
+        url maven_path_topobyte
+    }
+    maven {
+        url 'http://mvn.topobyte.de'
+    }
+    maven {
+        url '/home/z/android-sdk/extras/android/m2repository'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.android:android:4.1.1.4'
+    compile 'de.topobyte:adt-misc:0.0.2'
+    compile 'de.topobyte:jeography-core:0.0.8'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: maven_url_topobyte)
+        }
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
