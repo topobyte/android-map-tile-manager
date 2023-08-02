@@ -27,7 +27,7 @@ targetCompatibility = 1.8
 dependencies {
     api 'com.google.android:android:4.1.1.4'
     api 'de.topobyte:adt-misc:0.0.2'
-    api 'de.topobyte:jeography-core:0.2.0'
+    api 'de.topobyte:jeography-core:0.3.0'
 }
 
 java {
